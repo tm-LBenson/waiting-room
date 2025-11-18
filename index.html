@@ -50,7 +50,7 @@
     margin:0 auto;
     transition:opacity calc(var(--fade-ms)*1ms) ease;
     opacity:0;
-    min-height:4.5em; /* reserve space to avoid layout jump */
+    min-height:4.5em; 
   }
   .slide.show{ opacity:1; }
   .sub{
@@ -58,7 +58,6 @@
     font-size:18px;
     color:#c7cad3;
   }
-  /* Make text scale down on smaller screens */
   @media (max-width:900px){ .slide{font-size:36px} }
   @media (max-width:600px){ .slide{font-size:28px} }
 </style>
@@ -72,51 +71,49 @@
   </div>
 
 <script>
-  // Edit timing if you want faster or slower slides
-  const SECONDS_PER_SLIDE = 5.5;  // visible time per tip
-  const FADE_MS = 600;            // should match --fade-ms in CSS
+  const SECONDS_PER_SLIDE = 5.5;  
+  const FADE_MS = 600;            
 
-  const tips = [
-    "Feeling stuck? Message a TA on Slack.",
-    "There is only one &lt;h1&gt; per page.",
-    "Add alt text to every image. Example: &lt;img alt=\"site logo\" ...&gt;",
-    "Use meaningful link text. Prefer \"Contact us\" over \"click here\".",
-    "Make navigation work in both directions between pages.",
-    "Keep file names lowercase-with-hyphens. Avoid spaces.",
-    "DevTools: right click, Inspect, edit HTML and CSS live.",
-    "Hard refresh if changes do not show: Ctrl-Shift-R (Windows) or Cmd-Shift-R (Mac).",
-    "CSS belongs in a stylesheet when possible. Keep structure and style separate.",
-    "Check contrast. Text should be readable on your background.",
-    "Practice typing. Accuracy first, speed comes next.",
-    "Break problems into small steps. Ship a small slice, then improve it.",
-    "Use lists for lists. &lt;ul&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;",
-    "Keep paragraphs short and readable.",
-    "Test on a narrow screen. Does your layout stack cleanly?",
-    "Save your Code.org Share link and paste it into Moodle.",
-    "In App Lab, use onEvent to respond to clicks and taps.",
-    "console.log is your friend when debugging JavaScript.",
-    "Variables store values you can reuse. Name them clearly.",
-    "Conditionals choose paths. Start with if (condition) { ... }",
-    "Functions package steps. Give them verbs in the name.",
-    "Events make pages feel alive. Start simple.",
-    "w3schools.com has quick HTML, CSS, and JS references.",
-    "Try a small wireframe before you build.",
-    "Use header, nav, main, and footer for clear structure.",
-    "One improvement at a time. Keep going.",
-    "Ask questions early. There are no bad questions here.",
-    "Pair programming: driver types, navigator guides. Switch often.",
-    "Keep images small when possible. Large files slow pages.",
-    "Be kind to your future self. Name things clearly.",
-    "Take a 10-minute break every 45 to 60 minutes.",
-    "Drink water. Brains run better hydrated.",
-    "When stuck for 10 minutes, ask a TA or classmate.",
-    "Focus on one small goal at a time. Ship the smallest next step.",
-    "Read error messages slowly. They usually point to the line that matters.",
-    "Try a smaller example of the problem. Prove one tiny piece works.",
-    "Write down what you plan to try next before you try it.",
-  ];
+const tips = [
+  "Feeling stuck? Message a TA on Slack.",
+  "Read error messages slowly. They usually point to the line that matters.",
+  "Use meaningful link text. Prefer \"Contact us\" over \"click here\".",
+  "There is only one &lt;h1&gt; per page.",
+  "Add alt text to every image. Example: &lt;img alt=\"site logo\" ...&gt;",
+  "Use header, nav, main, and footer for clear structure.",
+  "Keep file names lowercase-with-hyphens. Avoid spaces.",
+  "Keep paragraphs short and readable.",
+  "Use lists for lists. &lt;ul&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;",
+  "CSS belongs in a stylesheet when possible. Keep structure and style separate.",
+  "Check contrast. Text should be readable on your background.",
+  "Make navigation work in both directions between pages.",
+  "Test on a narrow screen. Does your layout stack cleanly?",
+  "Save your Code.org Share link and paste it into Moodle.",
+  "DevTools: right click, Inspect, edit HTML and CSS live.",
+  "Hard refresh if changes do not show: Ctrl-Shift-R (Windows) or Cmd-Shift-R (Mac).",
+  "w3schools.com has quick HTML, CSS, and JS references.",
+  "Try a small wireframe before you build.",
+  "Practice typing. Accuracy first, speed comes next.",
+  "Variables store values you can reuse. Name them clearly.",
+  "Functions package steps. Give them verbs in the name.",
+  "Conditionals choose paths. Start with if (condition) { ... }",
+  "Events make pages feel alive. Start simple.",
+  "console.log is your friend when debugging JavaScript.",
+  "In App Lab, use onEvent to respond to clicks and taps.",
+  "Break problems into small steps. Ship a small slice, then improve it.",
+  "One improvement at a time. Keep going.",
+  "Ask questions early. There are no bad questions here.",
+  "Pair programming: driver types, navigator guides. Switch often.",
+  "Keep images small when possible. Large files slow pages.",
+  "Be kind to your future self. Name things clearly.",
+  "Take a 10-minute break every 45 to 60 minutes.",
+  "Drink water. Brains run better hydrated.",
+  "When stuck for 10 minutes, ask a TA or classmate.",
+  "Focus on one small goal at a time. Ship the smallest next step.",
+  "Try a smaller example of the problem. Prove one tiny piece works.",
+  "Write down what you plan to try next before you try it."
+];
 
-  // Shuffle a little so repeat view feels fresh
   function shuffle(arr){
     for(let i=arr.length-1;i>0;i--){
       const j = Math.floor(Math.random()*(i+1));
@@ -124,13 +121,12 @@
     }
     return arr;
   }
-  shuffle(tips);
 
   const el = document.getElementById("slide");
   let i = -1;
 
   function showNext(){
-    // fade out
+  
     el.classList.remove("show");
     setTimeout(()=>{
       i = (i + 1) % tips.length;
@@ -140,12 +136,10 @@
     }, FADE_MS);
   }
 
-  // Start
   el.innerHTML = tips[0];
   el.classList.add("show");
   i = 0;
 
-  // Loop
   setInterval(showNext, SECONDS_PER_SLIDE * 1000);
 </script>
 </body>
